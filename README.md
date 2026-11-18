@@ -1,40 +1,47 @@
-# homebrew-shotctl
+# kontryx/homebrew-tap
 
-Homebrew tap for [shotctl](https://github.com/kontryx/shotctl), a keyboard-driven terminal app for importing photos from your SD card.
+[Homebrew](https://brew.sh) formulas for tools by kontryx.
 
-## Install
-
-```sh
-brew install kontryx/shotctl/shotctl
-```
-
-Or tap first:
+## Install a tool
 
 ```sh
-brew tap kontryx/shotctl
-brew install shotctl
+brew install kontryx/tap/<formula>
 ```
 
-## Upgrade
+Or tap once, then install any formula by name:
 
 ```sh
-brew update
-brew upgrade shotctl
+brew tap kontryx/tap
+brew install <formula>
 ```
 
-## Releasing a new version
+Upgrade with `brew update && brew upgrade`.
 
-1. Tag `vX.Y.Z` in `kontryx/shotctl` and publish a GitHub release.
-2. Compute the tarball checksum:
+## Formulas
+
+| Formula | Description |
+| --- | --- |
+| [`shotctl`](Formula/shotctl.rb) | Keyboard-driven photo import and archive manager ([source](https://github.com/kontryx/shotctl)) |
+
+## Adding a formula
+
+1. Tag `vX.Y.Z` in the tool's repository and publish a GitHub release. The repository must be public.
+2. Get the source tarball checksum:
 
    ```sh
-   curl -fsSL https://github.com/kontryx/shotctl/archive/refs/tags/vX.Y.Z.tar.gz | shasum -a 256
+   curl -fsSL https://github.com/kontryx/<tool>/archive/refs/tags/vX.Y.Z.tar.gz | shasum -a 256
    ```
 
-3. Update `url` and `sha256` in `Formula/shotctl.rb`, then run:
+3. Create `Formula/<tool>.rb`. `brew create --tap kontryx/tap <tarball-url>` generates a starting point.
+4. Add the tool to the table above.
+5. Check it:
 
    ```sh
-   brew audit --strict --online kontryx/shotctl/shotctl
-   brew install --build-from-source kontryx/shotctl/shotctl
-   brew test kontryx/shotctl/shotctl
+   brew audit --strict --online kontryx/tap/<tool>
+   brew install --build-from-source kontryx/tap/<tool>
+   brew test kontryx/tap/<tool>
    ```
+
+## Releasing a new version of a tool
+
+Update `url` and `sha256` in `Formula/<tool>.rb` using the steps above, then run the same checks.
