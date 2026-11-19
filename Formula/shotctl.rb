@@ -1,8 +1,8 @@
 class Shotctl < Formula
   desc "Keyboard-driven photo import and archive manager"
   homepage "https://github.com/kontryx/shotctl"
-  url "https://github.com/kontryx/shotctl/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "2ad94d13d6927d415d550e73be451b692ee4023fb799f0150d7e92dd27a9aba6"
+  url "https://github.com/kontryx/shotctl/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "2cde400e8afc5259a13732a487aaa04ab8acee1bc04459d18ba470973b84a6a7"
   license "MIT"
   head "https://github.com/kontryx/shotctl.git", branch: "main"
 
